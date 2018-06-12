@@ -12,18 +12,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      components: [
-        {
-          path: '/buy',
-          name: 'buy',
-          component: BuyProducts,
-        },
-        {
-          path: '/sell',
-          name: 'sell',
-          component: SellProducts,
-        },
-      ],
+    },
+    {
+      path: '/buy',
+      name: 'buy',
+      component: BuyProducts,
+    },
+    {
+      path: '/sell',
+      name: 'sell',
+      component: SellProducts,
     },
   ],
 });

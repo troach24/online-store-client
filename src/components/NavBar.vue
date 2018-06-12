@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Marketplace</a>
+  <a class="navbar-brand" href="/">Marketplace</a>
   <button class="navbar-toggler"
   type="button"
   data-toggle="collapse"

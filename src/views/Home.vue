@@ -1,15 +1,32 @@
 <template>
-  <div class="home">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active show" data-toggle="tab" href="#/buy">Buy</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#/sell">Sell</a>
-      </li>
-    </ul>
-    <router-link></router-link>
-    <router-link></router-link>
+  <div>
+    <div class="jumbotron">
+      <h1 class="display-3">Welcome to marketplace!</h1>
+      <p
+      class="lead">
+      This is a simple web store for buying or selling products.
+      Click the corresponding button below to get started!
+      </p>
+      <hr class="my-4">
+      <p class="lead">
+        <a
+        class="btn btn-primary btn-lg"
+        :name="'BuyProducts'"
+        :path="'buy'"
+        href="#/buy"
+        role="button">
+        Buy Products
+        </a>
+        <a
+        class="btn btn-primary btn-lg"
+        :name="'SellProducts'"
+        :path="'sell'"
+        href="#/sell"
+        role="button">
+        Sell Products
+        </a>
+      </p>
+    </div>
   </div>
 </template>
 
