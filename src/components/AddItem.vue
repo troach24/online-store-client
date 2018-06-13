@@ -25,7 +25,12 @@
       </div>
     </div>
     <label for="exampleTextarea">Item Description:</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    <textarea
+    v-model="item.description"
+    class="form-control"
+    id="exampleTextarea"
+    rows="3">
+    </textarea>
     <label for="exampleSelect1">Quantity Available:</label>
       <select
       v-model="item.quantity_available"
