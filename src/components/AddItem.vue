@@ -58,14 +58,26 @@ export default {
       },
     };
   },
-  // props: ['addJobs', 'jobs'],
+  props: ['getInventory'],
   methods: {
     // postItem() {
 
     // },
     addItem() {
-      // this.item = x
-      console.log(this.item);
+      // return fetch('https://marketplace-server-db.herokuapp.com/inventory', {
+      return fetch('http://localhost:5000/inventory', {
+      method: 'POST',
+      body: JSON.stringify(this.item),
+      headers: {
+        'content-type': 'application/json',
+        'mode': 'cors',
+        'cache': 'default',
+      }
+    })
+      .then(this.$router.push("/sell"))
+      // .then(getInventory)
+      // .then(scores => getScores())
+      .catch(err => console.error);
     },
   },
 };

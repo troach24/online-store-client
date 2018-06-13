@@ -23,5 +23,8 @@
 export default {
   name: 'Buy',
   props: ['getInventory', 'inventory'],
+  beforeMount(){
+    this.getInventory()
+  },
 };
 </script>

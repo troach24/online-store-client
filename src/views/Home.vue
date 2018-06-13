@@ -31,5 +31,6 @@ export default {
     SellProducts,
     AddItem,
   },
+  props: ['getInventory'],
 };
 </script>

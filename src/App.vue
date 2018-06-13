@@ -3,7 +3,7 @@
     <nav-bar></nav-bar>
     <router-view
     :inventory="inventory"
-    :getInventory="getInventory()"
+    :getInventory="getInventory"
     class="container"/>
   </div>
 </template>
@@ -20,7 +20,8 @@ export default {
   }),
   methods: {
     getInventory() {
-      fetch(('https://marketplace-server-db.herokuapp.com/inventory'), {
+      fetch(('http://localhost:5000/inventory'), {
+      // fetch(('https://marketplace-server-db.herokuapp.com/inventory'), {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Content-Type',
