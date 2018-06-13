@@ -9,20 +9,10 @@
       </p>
       <hr class="my-4">
       <p class="lead">
-        <a
-        class="btn btn-primary btn-lg"
-        :name="'BuyProducts'"
-        :path="'buy'"
-        href="#/buy"
-        role="button">
+        <a class="btn btn-primary btn-lg" :href="'#/buy'" role="button">
         Buy Products
         </a>
-        <a
-        class="btn btn-primary btn-lg"
-        :name="'SellProducts'"
-        :path="'sell'"
-        href="#/sell"
-        role="button">
+        <a class="btn btn-primary btn-lg" href="#/sell" role="button">
         Sell Products
         </a>
       </p>
