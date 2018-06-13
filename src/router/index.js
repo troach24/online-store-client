@@ -4,6 +4,7 @@ import Home from '@/views/Home';
 import BuyProducts from '@/views/BuyProducts';
 import SellProducts from '@/views/SellProducts';
 import AddItem from '@/components/AddItem';
+import ShoppingCart from '@/views/ShoppingCart';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/add-item',
       name: 'AddItem',
       component: AddItem,
+    },
+    {
+      path: '/cart',
+      name: 'ShoppingCart',
+      component: ShoppingCart,
     },
   ],
 });

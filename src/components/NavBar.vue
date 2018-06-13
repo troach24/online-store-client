@@ -2,12 +2,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="/">Marketplace</a>
   <div class="collapse navbar-collapse" id="navbarColor01">
-    <button class="btn btn-info my-2 my-sm-0" type="button">View Cart</button>
+    <a class="btn btn-info my-2 my-sm-0" href="/#/cart" role="button">View Cart</a>
   </div>
 </nav>
 </template>
 
 <script>
+
 export default {
 };
 </script>
