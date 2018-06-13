@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home';
-import BuyProducts from '@/components/BuyProducts';
-import SellProducts from '@/components/SellProducts';
+import BuyProducts from '@/views/BuyProducts';
+import SellProducts from '@/views/SellProducts';
 
 Vue.use(Router);
 

@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import BuyProducts from '@/components/BuyProducts';
-import SellProducts from '@/components/SellProducts';
+import BuyProducts from '@/views/BuyProducts';
+import SellProducts from '@/views/SellProducts';
 
 export default {
   components: {
