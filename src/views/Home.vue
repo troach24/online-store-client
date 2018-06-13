@@ -23,11 +23,13 @@
 <script>
 import BuyProducts from '@/views/BuyProducts';
 import SellProducts from '@/views/SellProducts';
+import AddItem from '@/components/AddItem';
 
 export default {
   components: {
     BuyProducts,
     SellProducts,
+    AddItem,
   },
 };
 </script>

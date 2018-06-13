@@ -13,7 +13,7 @@
         <li>{{inventoryItem.description}}</li>
       </ul>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Join Community</a>
+        <a class="btn btn-primary btn-lg" href="/#/add-item" role="button">Add Item</a>
       </p>
     </div>
   </div>

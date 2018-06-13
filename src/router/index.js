@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import BuyProducts from '@/views/BuyProducts';
 import SellProducts from '@/views/SellProducts';
+import AddItem from '@/components/AddItem';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/sell',
       name: 'sell',
       component: SellProducts,
+    },
+    {
+      path: '/add-item',
+      name: 'AddItem',
+      component: AddItem,
     },
   ],
 });
