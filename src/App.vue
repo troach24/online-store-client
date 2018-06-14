@@ -4,6 +4,8 @@
     <router-view
     :inventory="inventory"
     :getInventory="getInventory"
+    :cartTable="cartTable"
+    :getCartItems="getCartItems"
     class="container"/>
   </div>
 </template>
@@ -17,6 +19,7 @@ export default {
   },
   data: () => ({
     inventory: Array,
+    cartTable: Array,
   }),
   methods: {
     getInventory() {
@@ -29,6 +32,18 @@ export default {
         .then(res => res.json())
         .then((data) => {
           this.inventory = data.inventory;
+        });
+    },
+    getCartItems() {
+      fetch(('http://localhost:5000/cart'), {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      })
+        .then(res => res.json())
+        .then((data) => {
+          this.cartTable = data;
         });
     },
   },

@@ -24,12 +24,14 @@
 import BuyProducts from '@/views/BuyProducts';
 import SellProducts from '@/views/SellProducts';
 import AddItem from '@/components/AddItem';
+import ShoppingCart from '@/views/ShoppingCart';
 
 export default {
   components: {
     BuyProducts,
     SellProducts,
     AddItem,
+    ShoppingCart,
   },
 };
 </script>

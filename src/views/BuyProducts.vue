@@ -10,24 +10,23 @@
       <hr class="my-4">
       <p>This store is built to showcase my very own full stack CRUD app!</p>
       <ul class="item-ul">
-        <Item v-for="inventoryItem in inventory"
-        :inventoryItem="inventoryItem"
-        :key="inventoryItem.id"
-        :ref="inventoryItem.id" />
-         
+        <ForSaleItem v-for="item in inventory"
+        :item="item"
+        :key="item.id"
+        :ref="item.id" />
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import Item from '@/components/Item';
+import ForSaleItem from '@/components/ForSaleItem';
 
 export default {
   name: 'Buy',
   props: ['getInventory', 'inventory'],
   components: {
-    Item,
+    ForSaleItem,
   },
   beforeMount() {
     this.getInventory();
@@ -44,7 +43,7 @@ export default {
   methods: {
     setResponseMsg() {
       this.responseMessage =
-      'Item added successfully! Taking you back to your sales item dashboard..';
+      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
     },
     addItem() {
       return fetch('http://localhost:5000/cart', {

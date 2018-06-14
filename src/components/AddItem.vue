@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="addItem" class="form-group">
-    <label class="col-form-label" for="inputDefault">Item Name:</label>
+    <label class="col-form-label" for="inputDefault">ForSaleItem Name:</label>
     <input
     v-model="item.name"
     type="text"
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <label for="exampleTextarea">Item Description:</label>
+    <label for="exampleTextarea">ForSaleItem Description:</label>
     <textarea
     v-model="item.description"
     class="form-control"
@@ -49,6 +49,11 @@
     id="inputDefault">
     <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
     <p id="response-message">{{responseMessage}}</p>
+    <!-- implement this as response message vvvvv
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+    </div> -->
   </form>
 </template>
 
@@ -72,7 +77,7 @@ export default {
     },
     setResponseMsg() {
       this.responseMessage =
-      'Item added successfully! Taking you back to your sales item dashboard..';
+      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
     },
     addItem() {
       return fetch('http://localhost:5000/inventory', {
@@ -86,7 +91,7 @@ export default {
       })
         .then(this.setResponseMsg())
         .then(setTimeout(() => { this.redirect(); }, 3000))
-        .catch(error => console.error);
+        .catch(error => console.error(error));
     },
   },
 };

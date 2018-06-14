@@ -1,17 +1,17 @@
 <template>
   <div id="item-container">
-    <li @click="clkd">
+    <li>
       <div class="card border-primary mb-3" style="width: 20rem; height: 20rem;">
         <div class="card-body">
-          <h4 class="card-title">{{inventoryItem.name}}</h4>
+          <h4 class="card-title">{{item.name}}</h4>
           <div class="card-middle">
-            <img class="card-img" :src="inventoryItem.image_url" alt="">
+            <img class="card-img" :src="item.image_url" alt="">
           </div>
-          <p class="card-text"> {{inventoryItem.description}} </p>
+          <p class="card-text"> {{item.description}} </p>
       </div>
         <div class="card-bottom">
-          <small> {{inventoryItem.quantity_available}} left in stock</small>
-          <button type="button" class="btn btn-primary">Add to Cart</button>
+          <small> {{item.quantity_available}} left in stock</small>
+          <button @click="addToCart" type="button" class="btn btn-info">Add to Cart</button>
         </div>
       </div>
     </li>
@@ -20,9 +20,9 @@
 
 <script>
 export default {
-  props: ['inventoryItem'],
+  props: ['item'],
   methods: {
-    clkd(event) {
+    addToCart(event) {
       console.log(event)
     },
   },

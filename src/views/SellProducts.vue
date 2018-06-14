@@ -12,22 +12,22 @@
       </p>
       <hr class="my-4">
       <ul>
-        <Item v-for="inventoryItem in inventory"
-        :inventoryItem="inventoryItem"
-        :key="inventoryItem.id" />
+        <InventoryItem v-for="item in inventory"
+        :item="item"
+        :key="item.id" />
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import Item from '@/components/Item';
+import InventoryItem from '@/components/InventoryItem';
 
 export default {
   name: 'Sell',
   props: ['getInventory', 'inventory'],
   components: {
-    Item,
+    InventoryItem,
   },
   beforeMount() {
     this.getInventory();
