@@ -12,7 +12,9 @@
       <ul class="item-ul">
         <Item v-for="inventoryItem in inventory"
         :inventoryItem="inventoryItem"
-        :key="inventoryItem.id" />
+        :key="inventoryItem.id"
+        :ref="inventoryItem.id" />
+         
       </ul>
     </div>
   </div>
@@ -29,6 +31,35 @@ export default {
   },
   beforeMount() {
     this.getInventory();
+  },
+  data() {
+    return {
+      responseMessage: '',
+      cartItem: {
+        inventory_id: 0,
+        quantity: 0,
+      },
+    };
+  },
+  methods: {
+    setResponseMsg() {
+      this.responseMessage =
+      'Item added successfully! Taking you back to your sales item dashboard..';
+    },
+    addItem() {
+      return fetch('http://localhost:5000/cart', {
+        method: 'POST',
+        body: JSON.stringify(this.cartItem),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      })
+        .then(this.setResponseMsg())
+        .then(setTimeout(() => { this.redirect(); }, 3000))
+        .catch(error => console.error);
+    },
   },
 };
 </script>

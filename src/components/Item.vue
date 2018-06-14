@@ -1,6 +1,6 @@
 <template>
   <div id="item-container">
-    <li>
+    <li @click="clkd">
       <div class="card border-primary mb-3" style="width: 20rem; height: 20rem;">
         <div class="card-body">
           <h4 class="card-title">{{inventoryItem.name}}</h4>
@@ -21,6 +21,11 @@
 <script>
 export default {
   props: ['inventoryItem'],
+  methods: {
+    clkd(event) {
+      console.log(event)
+    },
+  },
 };
 </script>
 
