@@ -7,9 +7,6 @@
     <div class="container">
       <h1 class="display-3">CART!</h1>
       <p class="lead">Here is what you've chosen to waste your money on.</p>
-      <!-- <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/#/add-item" role="button">Add Item</a>
-      </p> -->
       <hr class="my-4">
       <ul>
         <CartItem v-for="cartItem in cartTable"
