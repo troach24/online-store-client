@@ -1,9 +1,8 @@
 <template>
   <div>
-    <!-- <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/#/buy">Buy</a></li>
-      <li class="breadcrumb-item active">Sell</li>
-    </ol> -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/#/buy">Back</a></li>
+    </ol>
     <div class="container">
       <h1 class="display-3">CART!</h1>
       <p class="lead">Here is what you've chosen to waste your money on.</p>

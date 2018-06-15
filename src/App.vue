@@ -4,8 +4,9 @@
     <router-view
     :inventory="inventory"
     :getInventory="getInventory"
-    :cartTable="cartTable"
+    :cartTable="cartTable.cart"
     :getCartItems="getCartItems"
+    :selectedInventoryItem="selectedInventoryItem"
     class="container"/>
   </div>
 </template>
@@ -20,6 +21,7 @@ export default {
   data: () => ({
     inventory: Array,
     cartTable: Array,
+    selectedInventoryItem: Object,
   }),
   methods: {
     getInventory() {

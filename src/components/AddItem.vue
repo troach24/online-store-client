@@ -48,11 +48,12 @@
     placeholder="Paste image URL here..."
     id="inputDefault">
     <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
-    <p id="response-message">{{responseMessage}}</p>
+    <p id="response-message">{{responseMessage || errorMessage}}</p>
     <!-- implement this as response message vvvvv
     <div class="alert alert-dismissible alert-success">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+      <strong>Well done!</strong> You successfully read
+      <a href="#" class="alert-link">this important alert message</a>.
     </div> -->
   </form>
 </template>
@@ -62,6 +63,7 @@ export default {
   data() {
     return {
       responseMessage: '',
+      errorMessage: '',
       item: {
         name: '',
         price: '',
@@ -77,7 +79,7 @@ export default {
     },
     setResponseMsg() {
       this.responseMessage =
-      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
+      'Item added successfully! Taking you back to your sales item dashboard..';
     },
     addItem() {
       return fetch('http://localhost:5000/inventory', {
@@ -88,10 +90,18 @@ export default {
           mode: 'cors',
           cache: 'default',
         },
-      })
-        .then(this.setResponseMsg())
-        .then(setTimeout(() => { this.redirect(); }, 3000))
-        .catch(error => console.error(error));
+      }).then((res) => {
+          if(res.status == 500) {
+            this.errorMessage = 'ahahahahahah';
+            throw new Error(this.errorMessage);
+            return false
+          }
+          this.setResponseMsg()
+          return true
+        }).then((success) => {
+          if(!success) { return }
+          return setTimeout(() => { this.redirect(); }, 3000)
+        });
     },
   },
 };

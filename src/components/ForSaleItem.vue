@@ -1,6 +1,6 @@
 <template>
   <div id="item-container">
-    <li>
+    <li :item="item">
       <div class="card border-primary mb-3" style="width: 20rem; height: 20rem;">
         <div class="card-body">
           <h4 class="card-title">{{item.name}}</h4>
@@ -11,7 +11,12 @@
       </div>
         <div class="card-bottom">
           <small> {{item.quantity_available}} left in stock</small>
-          <button @click="addToCart" type="button" class="btn btn-info">Add to Cart</button>
+          <button
+          @click="addToCart(), postToCart()"
+          type="button"
+          class="btn btn-info">
+          Add to Cart
+          </button>
         </div>
       </div>
     </li>
@@ -21,9 +26,40 @@
 <script>
 export default {
   props: ['item'],
+  data() {
+    return {
+      responseMessage: '',
+      newCartItem: Object,
+    };
+  },
   methods: {
-    addToCart(event) {
-      console.log(event)
+    addToCart() {
+      this.newCartItem =
+      {
+        cart_item_name: this.item.name,
+        cart_item_price: this.item.price,
+        cart_item_description: this.item.description,
+        cart_item_image_url: this.item.image_url,
+        quantity: 0,
+      };
+    },
+    setResponseMsg() {
+      this.responseMessage =
+      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
+    },
+    postToCart() {
+      return fetch('http://localhost:5000/cart', {
+        method: 'POST',
+        body: JSON.stringify(this.newCartItem),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      })
+        // .then(this.setResponseMsg())
+        // .then(setTimeout(() => { this.redirect(); }, 3000))
+        .catch(error => console.error(error));
     },
   },
 };
