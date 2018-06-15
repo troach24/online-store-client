@@ -7,6 +7,7 @@
     :cartTable="cartTable.cart"
     :getCartItems="getCartItems"
     :selectedInventoryItem="selectedInventoryItem"
+    :getItemById="getItemById"
     class="container"/>
   </div>
 </template>
@@ -48,10 +49,17 @@ export default {
           this.cartTable = data;
         });
     },
+    getItemById(route) {
+      fetch(('http://localhost:5000/inventory/' + route), {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }).then(res => res.json())
+        .then((data) => {
+          this.selectedInventoryItem = data.inventoryItem;
+        });
+    },
   },
 };
 </script>
-
-<style>
-
-</style>

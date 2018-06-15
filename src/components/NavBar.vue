@@ -9,6 +9,14 @@
     role="button">
     View Cart
     </a>
+    <!-- FINISH V-IF FOR CHECKOUT BUTTON -->
+    <a
+    v-if="$route.name == 'cart'"
+    class="btn btn-info my-2 my-sm-0"
+    href="/#/cart"
+    role="button">
+    Checkout
+    </a>
   </div>
 </nav>
 </template>

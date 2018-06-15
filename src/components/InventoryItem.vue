@@ -12,8 +12,7 @@
         <div class="card-bottom">
           <small> {{item.quantity_available}} left in stock</small>
           <div>
-            <!-- change button colors -->
-            <button type="button" class="btn btn-warning">Edit</button>
+            <button @click="loadParams()" type="button" class="btn btn-warning">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
@@ -26,6 +25,10 @@
 export default {
   props: ['item'],
   methods: {
+    loadParams() {
+      const id = this.item.id
+      this.$router.push('/inventory/update/' + this.item.id);
+    }
   },
 };
 </script>
