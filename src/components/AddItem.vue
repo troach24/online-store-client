@@ -91,17 +91,17 @@ export default {
           cache: 'default',
         },
       }).then((res) => {
-          if(res.status == 500) {
-            this.errorMessage = 'ahahahahahah';
-            throw new Error(this.errorMessage);
-            return false
-          }
-          this.setResponseMsg()
-          return true
-        }).then((success) => {
-          if(!success) { return }
-          return setTimeout(() => { this.redirect(); }, 3000)
-        });
+        if (res.status === 500) {
+          this.errorMessage = 'ahahahahahah';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        this.setResponseMsg();
+        return true;
+      }).then((success) => {
+        if (!success) { return };
+        return setTimeout(() => this.redirect(), 3000);
+      });
     },
   },
 };

@@ -13,7 +13,7 @@
           <small> {{item.quantity}} left in stock</small>
           <div>
             <!-- change button colors -->
-            <button type="button" class="btn btn-info">Edit</button>
+            <button type="button" class="btn btn-warning">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
