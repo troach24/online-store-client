@@ -1,7 +1,7 @@
 <template>
   <div>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/#/buy">Back</a></li>
+      <li class="breadcrumb-item"><a href="/#/inventory/buy">Back</a></li>
     </ol>
     <div class="container">
       <h1 class="display-3">CART!</h1>

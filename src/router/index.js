@@ -16,17 +16,17 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/buy',
+      path: '/inventory/buy',
       name: 'buy',
       component: BuyProducts,
     },
     {
-      path: '/sell',
+      path: '/inventory/sell',
       name: 'sell',
       component: SellProducts,
     },
     {
-      path: '/add-item',
+      path: '/inventory/add-item',
       name: 'AddItem',
       component: AddItem,
     },

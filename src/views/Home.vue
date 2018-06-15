@@ -9,10 +9,10 @@
       </p>
       <hr class="my-4">
       <p class="lead">
-        <a class="btn btn-primary btn-lg" :href="'#/buy'" role="button">
+        <a class="btn btn-primary btn-lg" :href="'#/inventory/buy'" role="button">
         Buy Products
         </a>
-        <a class="btn btn-primary btn-lg" href="#/sell" role="button">
+        <a class="btn btn-primary btn-lg" href="#/inventory/sell" role="button">
         Sell Products
         </a>
       </p>

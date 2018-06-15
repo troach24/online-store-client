@@ -2,7 +2,7 @@
   <div>
     <ol class="breadcrumb">
       <li class="breadcrumb-item active">Buy</li>
-      <li class="breadcrumb-item"><a href="/#/sell">Sell</a></li>
+      <li class="breadcrumb-item"><a href="/#/inventory/sell">Sell</a></li>
     </ol>
     <div class="container">
       <h1 class="display-3">BUY THINGS!</h1>

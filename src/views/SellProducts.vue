@@ -1,14 +1,14 @@
 <template>
   <div>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/#/buy">Buy</a></li>
+      <li class="breadcrumb-item"><a href="/#/inventory/buy">Buy</a></li>
       <li class="breadcrumb-item active">Sell</li>
     </ol>
     <div class="container">
       <h1 class="display-3">SELL STUFF!</h1>
       <p class="lead">Add an item or view what you have posted for sale.</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/#/add-item" role="button">Add Item</a>
+        <a class="btn btn-primary btn-lg" href="/#/inventory/add-item" role="button">Add Item</a>
       </p>
       <hr class="my-4">
       <ul>

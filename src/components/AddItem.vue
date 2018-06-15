@@ -75,7 +75,7 @@ export default {
   props: ['getInventory'],
   methods: {
     redirect() {
-      this.$router.push('/sell');
+      this.$router.push('/inventory/sell');
     },
     setResponseMsg() {
       this.responseMessage =
