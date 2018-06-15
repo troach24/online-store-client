@@ -49,12 +49,6 @@
     id="inputDefault">
     <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
     <p id="response-message">{{responseMessage || errorMessage}}</p>
-    <!-- implement this as response message vvvvv
-    <div class="alert alert-dismissible alert-success">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong>Well done!</strong> You successfully read
-      <a href="#" class="alert-link">this important alert message</a>.
-    </div> -->
   </form>
 </template>
 
