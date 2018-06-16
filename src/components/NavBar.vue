@@ -13,7 +13,7 @@
     <a
     v-if="$route.name == 'cart'"
     class="btn btn-info my-2 my-sm-0"
-    href="/#/cart"
+    href="/#/"
     role="button">
     Checkout
     </a>

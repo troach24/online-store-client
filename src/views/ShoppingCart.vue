@@ -31,5 +31,11 @@ export default {
 </script>
 
 <style scoped>
-
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: 20px;
+  }
 </style>
