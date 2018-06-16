@@ -12,7 +12,7 @@
         <div class="card-bottom">
           <small> {{item.quantity_available}} left in stock</small>
           <div>
-            <button @click="loadParams()" type="button" class="btn btn-warning">Edit</button>
+            <button @click="loadParams()" type="button" class="btn btn-secondary">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
