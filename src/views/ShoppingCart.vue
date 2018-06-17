@@ -12,7 +12,10 @@
         :item="cartItem"
         :key="cartItem.id" />
       </ul>
-      <button type="button" class="btn btn-success btn-lg">Checkout</button>
+      <a
+      class="btn btn-success btn-lg"
+      role="button"
+      href="/#/payment">Checkout</a>
     </div>
   </div>
 </template>

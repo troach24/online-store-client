@@ -6,6 +6,7 @@ import SellProducts from '@/views/SellProducts';
 import AddItem from '@/components/AddItem';
 import ShoppingCart from '@/views/ShoppingCart';
 import UpdateItem from '@/components/UpdateItem';
+import Payment from '@/components/Payment';
 
 Vue.use(Router);
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/inventory/update/:id',
       name: 'UpdateItem',
       component: UpdateItem,
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment,
     },
   ],
 });
