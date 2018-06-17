@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootswatch": "^4.1.1",
+    "es6-promise": "^4.2.4",
     "now": "^11.2.3",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",

@@ -27,7 +27,7 @@
               </select>
             </div>
           <div>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button @click="deleteItem()" type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
@@ -80,6 +80,27 @@ export default {
           this.updateItem(this.item);
         }
       }
+    },
+    deleteItem() {
+      return fetch((`http://localhost:5000/cart/${this.item.id}`), {
+        method: 'DELETE',
+        body: JSON.stringify(this.item),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      }).then((res) => {
+        if (res.status === 500) {
+          this.errorMessage = 'Something went wrong. Please try again';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        this.setResponseMsg();
+        return true;
+      }).then((success) => {
+        if (!success) { return };
+      });
     },
   },
 };

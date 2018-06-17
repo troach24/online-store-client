@@ -29,6 +29,9 @@ export default {
       const selectedId = this.item.id;
       this.$router.push(`/inventory/update/${selectedId}`);
     },
+    // deleteInventoryItem() {
+
+    // }
   },
 };
 </script>
