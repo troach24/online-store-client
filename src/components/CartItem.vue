@@ -10,9 +10,19 @@
           <p class="card-text"> {{item.cart_item_description}} </p>
       </div>
         <div class="card-bottom">
-          <small> {{item.quantity}} left in stock</small>
+            <div class="form-group">
+              <label for="exampleSelect1">Quantity</label>
+              <select class="form-control" name="template" v-model="item.quantity" id="options">
+                  <option
+                  :key="quantity"
+                  v-for="quantity in quantities"
+                  :selected="quantity == item.quantity ? item.quantity : 1"
+                  :value="quantity">
+                    {{ quantity }}
+                  </option>
+              </select>
+            </div>
           <div>
-            <button type="button" class="btn btn-secondary">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
@@ -24,6 +34,15 @@
 <script>
 export default {
   props: ['item'],
+  dropDown: {
+    
+  },
+  data() {
+    return {
+      quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      category: 1,
+    }
+  },
 };
 </script>
 
@@ -48,5 +67,8 @@ li {
   align-items: center;
   padding: 10px;
   margin-bottom: 10px;
+}
+label {
+  margin: 2px;
 }
 </style>

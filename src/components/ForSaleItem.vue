@@ -40,7 +40,7 @@ export default {
         cart_item_price: this.item.price,
         cart_item_description: this.item.description,
         cart_item_image_url: this.item.image_url,
-        quantity: 0,
+        quantity: 4,
       };
     },
     setResponseMsg() {
