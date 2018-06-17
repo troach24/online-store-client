@@ -50,7 +50,7 @@ export default {
         });
     },
     getItemById(route) {
-      fetch(('http://localhost:5000/inventory/' + route), {
+      fetch((`http://localhost:5000/inventory/${route}`), {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Content-Type',

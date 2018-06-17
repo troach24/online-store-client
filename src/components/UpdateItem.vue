@@ -62,10 +62,7 @@ export default {
   },
   props: ['getItemById', 'selectedInventoryItem'],
   created() {
-    this.getItemById(this.$route.params.id)
-  },
-  mounted() {
-
+    this.getItemById(this.$route.params.id);
   },
   methods: {
     redirect() {
@@ -76,7 +73,7 @@ export default {
       'Item updated successfully! Taking you back to your sales item dashboard..';
     },
     updateItem() {
-      return fetch(('http://localhost:5000/inventory/' + this.$route.params.id), {
+      return fetch((`http://localhost:5000/inventory/${this.$route.params.id}`), {
         method: 'PUT',
         body: JSON.stringify(this.selectedInventoryItem),
         headers: {

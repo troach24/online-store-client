@@ -12,7 +12,11 @@
         <div class="card-bottom">
             <div class="form-group">
               <label for="exampleSelect1">Quantity</label>
-              <select class="form-control" name="template" v-model="item.quantity" id="options">
+              <select
+              @change="updateQuantity"
+              class="form-control"
+              name="template"
+              v-model="item.quantity" id="options">
                   <option
                   :key="quantity"
                   v-for="quantity in quantities"
@@ -34,14 +38,49 @@
 <script>
 export default {
   props: ['item'],
-  dropDown: {
-    
-  },
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       category: 1,
-    }
+      responseMsg: '',
+    };
+  },
+  methods: {
+    setResponseMsg() {
+      this.responseMsg = 'Success!';
+    },
+    updateItem(item) {
+      return fetch((`http://localhost:5000/cart/${this.item.id}`), {
+        method: 'PUT',
+        body: JSON.stringify(item),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      }).then((res) => {
+        if (res.status === 500) {
+          this.errorMessage = 'Something went wrong. Please try again';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        this.setResponseMsg();
+        return true;
+      }).then((success) => {
+        if (!success) { return };
+      });
+    },
+    updateQuantity(value) {
+      const optionElements = value.path[0];
+      const optionArray = [...optionElements];
+      let i;
+      for (i = 0; i < optionArray.length; i++) {
+        if (optionArray[i].selected === true) {
+          this.item.quantity = +(optionArray[i].value);
+          this.updateItem(this.item);
+        }
+      }
+    },
   },
 };
 </script>

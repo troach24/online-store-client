@@ -26,9 +26,9 @@ export default {
   props: ['item'],
   methods: {
     loadParams() {
-      const id = this.item.id
-      this.$router.push('/inventory/update/' + this.item.id);
-    }
+      const selectedId = this.item.id;
+      this.$router.push(`/inventory/update/${selectedId}`);
+    },
   },
 };
 </script>
