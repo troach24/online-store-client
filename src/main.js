@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import { StripeCheckout } from 'vue-stripe';
 
 import 'bootswatch/dist/united/bootstrap.css';
 
@@ -11,6 +12,7 @@ import App from './App';
 import router from './router';
 
 Vue.use(VueAxios, axios);
+Vue.component('stripe-checkout', StripeCheckout);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
