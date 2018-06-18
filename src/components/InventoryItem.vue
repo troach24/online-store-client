@@ -13,7 +13,7 @@
           <small> {{item.quantity_available}} left in stock</small>
           <div>
             <button @click="loadParams()" type="button" class="btn btn-secondary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button @click="deleteItem()" type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
@@ -23,15 +23,34 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['item', 'getInventory'],
   methods: {
     loadParams() {
       const selectedId = this.item.id;
       this.$router.push(`/inventory/update/${selectedId}`);
     },
-    // deleteInventoryItem() {
-
-    // }
+    deleteItem() {
+      return fetch((`http://localhost:5000/inventory/${this.item.id}`), {
+        method: 'DELETE',
+        body: JSON.stringify(this.item),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      }).then((res) => {
+        if (res.status === 500) {
+          this.errorMessage = 'Something went wrong. Please try again';
+          throw new Error(this.errorMessage);
+          return false;
+        }
+        // this.setResponseMsg();
+        this.getInventory();
+        return true;
+      }).then((success) => {
+        if (!success) { return };
+      });
+    },
   },
 };
 </script>

@@ -10,7 +10,8 @@
       <ul>
         <CartItem v-for="cartItem in cartTable"
         :item="cartItem"
-        :key="cartItem.id" />
+        :key="cartItem.id"
+        :getCartItems="getCartItems" />
       </ul>
       <a
       class="btn btn-success btn-lg"

@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['item', 'getCartItems'],
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -97,6 +97,7 @@ export default {
           return false;
         }
         this.setResponseMsg();
+        this.getCartItems();
         return true;
       }).then((success) => {
         if (!success) { return };

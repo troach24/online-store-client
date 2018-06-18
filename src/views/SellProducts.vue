@@ -12,7 +12,7 @@
       </p>
       <hr class="my-4">
       <ul>
-        <InventoryItem v-for="item in inventory"
+        <InventoryItem :getInventory="getInventory" v-for="item in inventory"
         :item="item"
         :key="item.id" />
       </ul>
