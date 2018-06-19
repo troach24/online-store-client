@@ -13,19 +13,9 @@
         :key="cartItem.id"
         :getCartItems="getCartItems" />
       </ul>
-      <!-- <a
-      class="btn btn-success btn-lg"
-      role="button"
-      href="/#/payment">Checkout</a> -->
-      <form action="/process-payment" method="POST">
-      <stripe-checkout
-          stripe-key="pk_test_fTRwe6G0jpZ0VubVkU4pAYwn"
-          product="product"
-          button="Checkout"
-          button-class="btn btn-success btn-lg"
-          on-success="broadcast">
-      </stripe-checkout>
-    </form>
+      <div>
+        <button class="btn btn-success btn-lg" @click="checkout">Checkout</button>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +30,24 @@ export default {
   props: ['getCartItems', 'cartTable', 'getInventory', 'inventory'],
   beforeMount() {
     this.getCartItems();
+  },
+  methods: {
+    checkout() {
+      this.getCartItems();
+      // this.$checkout.close() 
+      // is also available.
+      this.$checkout.open({
+        name: 'Shut up and take my money!',
+        currency: 'USD',
+        amount: 99999,
+        token: (token) => {
+          // Send the token to your server
+          // for payment or subscription handling,
+          // or do whatever you want with it
+          // I don't really care. 
+        },
+      });
+    },
   },
 };
 </script>

@@ -25,7 +25,6 @@ import BuyProducts from '@/views/BuyProducts';
 import SellProducts from '@/views/SellProducts';
 import AddItem from '@/components/AddItem';
 import ShoppingCart from '@/views/ShoppingCart';
-import Payment from '@/components/Payment';
 
 export default {
   components: {
@@ -33,7 +32,6 @@ export default {
     SellProducts,
     AddItem,
     ShoppingCart,
-    Payment,
   },
 };
 </script>

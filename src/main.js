@@ -4,15 +4,23 @@ import Vue from 'vue';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import { StripeCheckout } from 'vue-stripe';
+import VueStripeCheckout from 'vue-stripe-checkout';
 
 import 'bootswatch/dist/united/bootstrap.css';
 
 import App from './App';
 import router from './router';
 
+const options = {
+  key: 'pk_test_fTRwe6G0jpZ0VubVkU4pAYwn',
+  image: '/static/mugShot.png',
+  locale: 'auto',
+  currency: 'node',
+  panelLabel: 'Pay {{amount}}',
+};
+
 Vue.use(VueAxios, axios);
-Vue.component('stripe-checkout', StripeCheckout);
+Vue.use(VueStripeCheckout, options);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
