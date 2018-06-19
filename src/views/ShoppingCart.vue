@@ -7,6 +7,7 @@
       <h1 class="display-3">CART!</h1>
       <p class="lead">Here is what you've chosen to waste your money on.</p>
       <hr class="my-4">
+      <h2>{{ paidStatusMsg }}</h2>
       <ul>
         <CartItem v-for="cartItem in cartTable"
         :cartItem="cartItem"
@@ -31,26 +32,64 @@ export default {
   beforeMount() {
     this.getCartItems();
   },
+  data() {
+    return {
+      purchaseData: {
+        amount: 0,
+      },
+      payLoad: {
+        stripeToken: 0,
+        amount: 0,
+      },
+      paidStatusMsg: '',
+    };
+  },
   methods: {
     getTotal(arr) {
       return arr.reduce((total, checkoutItem) => {
         total += checkoutItem.cart_item_price * checkoutItem.quantity;
+        this.purchaseData.amount = total
         return total;
       },0)
     },
+    displayError(err, paidStatusMsg) {
+      const message = `There was an error processing your credit card: ${err.message}`;
+      paidStatusMsg = message;
+    },
     checkout() {
       this.getCartItems();
-      // this.$checkout.close() 
+      // this.$checkout.close()
       // is also available.
       this.$checkout.open({
         name: 'Shut up and take my money!',
         currency: 'USD',
         amount: this.getTotal(this.cartTable) * 100,
         token: (token) => {
-          // Send the token to your server
-          // for payment or subscription handling,
-          // or do whatever you want with it
-          // I don't really care. 
+          console.log(token);
+          const payLoad = {
+            stripeToken: token.id,
+            amount: this.purchaseData.amount
+          };
+          console.log(payLoad);
+          fetch('http://localhost:5000/accept-payment', {
+            method: 'post',
+            body: JSON.stringify(this.payLoad),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(res => res.json())
+            // FIX THIS SHIZZZZZZZ
+            .then(res => {
+              // display total charged to client
+              if (res.failure_code) {
+                this.paidStatusMsg = 'There was an error processing your card';
+              } else {
+                // const message = `Your card was charged $${res.amount / 100}`;
+                this.paidStatusMsg = `Your card was charged $${res.amount / 100}`;
+              }
+            })
+            .catch(error => console.error(error));
         },
       });
     },
