@@ -32,6 +32,12 @@ export default {
     this.getCartItems();
   },
   methods: {
+    getTotal(arr) {
+      return arr.reduce((total, checkoutItem) => {
+        total += checkoutItem.cart_item_price * checkoutItem.quantity;
+        return total;
+      },0)
+    },
     checkout() {
       this.getCartItems();
       // this.$checkout.close() 
@@ -39,7 +45,7 @@ export default {
       this.$checkout.open({
         name: 'Shut up and take my money!',
         currency: 'USD',
-        amount: 99999,
+        amount: this.getTotal(this.cartTable) * 100,
         token: (token) => {
           // Send the token to your server
           // for payment or subscription handling,
@@ -59,5 +65,8 @@ export default {
     justify-content: space-evenly;
     padding: 0;
     margin-top: 20px;
+  }
+  button {
+    margin-bottom: 20px;
   }
 </style>
