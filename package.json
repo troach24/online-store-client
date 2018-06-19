@@ -19,6 +19,7 @@
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1",
     "vue-stripe": "^0.1.52",
+    "vue-stripe-elements": "^0.2.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

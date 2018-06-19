@@ -3,11 +3,11 @@
     <li>
       <div class="card border-primary mb-3" style="width: 20rem; height: 20rem;">
         <div class="card-body">
-          <h4 class="card-title">{{item.cart_item_name}}</h4>
+          <h4 class="card-title">{{cartItem.cart_item_name}}</h4>
           <div class="card-middle">
-            <img class="card-img" :src="item.cart_item_image_url" alt="">
+            <img class="card-img" :src="cartItem.cart_item_image_url" alt="">
           </div>
-          <p class="card-text"> {{item.cart_item_description}} </p>
+          <p class="card-text"> {{cartItem.cart_item_description}} </p>
       </div>
         <div class="card-bottom">
             <div class="form-group">
@@ -16,11 +16,11 @@
               @change="updateQuantity"
               class="form-control"
               name="template"
-              v-model="item.quantity" id="options">
+              v-model="cartItem.quantity" id="options">
                   <option
                   :key="quantity"
                   v-for="quantity in quantities"
-                  :selected="quantity == item.quantity ? item.quantity : 1"
+                  :selected="quantity == cartItem.quantity ? cartItem.quantity : 1"
                   :value="quantity">
                     {{ quantity }}
                   </option>
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  props: ['item', 'getCartItems'],
+  props: ['cartItem', 'getCartItems'],
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -49,10 +49,10 @@ export default {
     setResponseMsg() {
       this.responseMsg = 'Success!';
     },
-    updateItem(item) {
-      return fetch((`http://localhost:5000/cart/${this.item.id}`), {
+    updateItem(cartItem) {
+      return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
         method: 'PUT',
-        body: JSON.stringify(item),
+        body: JSON.stringify(cartItem),
         headers: {
           'content-type': 'application/json',
           mode: 'cors',
@@ -76,15 +76,15 @@ export default {
       let i;
       for (i = 0; i < optionArray.length; i++) {
         if (optionArray[i].selected === true) {
-          this.item.quantity = +(optionArray[i].value);
-          this.updateItem(this.item);
+          this.cartItem.quantity = +(optionArray[i].value);
+          this.updateItem(this.cartItem);
         }
       }
     },
     deleteItem() {
-      return fetch((`http://localhost:5000/cart/${this.item.id}`), {
+      return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
         method: 'DELETE',
-        body: JSON.stringify(this.item),
+        body: JSON.stringify(this.cartItem),
         headers: {
           'content-type': 'application/json',
           mode: 'cors',

@@ -9,14 +9,23 @@
       <hr class="my-4">
       <ul>
         <CartItem v-for="cartItem in cartTable"
-        :item="cartItem"
+        :cartItem="cartItem"
         :key="cartItem.id"
         :getCartItems="getCartItems" />
       </ul>
-      <a
+      <!-- <a
       class="btn btn-success btn-lg"
       role="button"
-      href="/#/payment">Checkout</a>
+      href="/#/payment">Checkout</a> -->
+      <form action="/process-payment" method="POST">
+      <stripe-checkout
+          stripe-key="pk_test_fTRwe6G0jpZ0VubVkU4pAYwn"
+          product="product"
+          button="Checkout"
+          button-class="btn btn-success btn-lg"
+          on-success="broadcast">
+      </stripe-checkout>
+    </form>
     </div>
   </div>
 </template>
