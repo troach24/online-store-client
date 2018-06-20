@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <div class="jumbotron">
-      <h1 class="display-3">Welcome to marketplace!</h1>
-      <p
-      class="lead">
-      This is a simple web store for buying or selling products.
-      Click the corresponding button below to get started!
+  <div class="home">
+    <div class="jumbotron text-center">
+      <h1 class="display-3">Welcome!</h1>
+      <p class="lead">
+        An online marketplace where you can buy and sell all the necessitites
+        for your doggos!
       </p>
       <hr class="my-4">
       <p class="lead">
@@ -35,3 +34,11 @@ export default {
   },
 };
 </script>
+
+<style>
+  .home {
+    height: 85vh;
+    overflow: auto;
+  }
+</style>
+

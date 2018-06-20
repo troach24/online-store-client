@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">Marketplace</a>
+  <a class="navbar-brand" href="/">WOOF-E-MART</a>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <a
     v-if="$route.name == 'buy' || $route.name == 'home'"
