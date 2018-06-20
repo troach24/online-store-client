@@ -15,12 +15,10 @@
 
 <script>
 import NavBar from '@/components/NavBar';
-// import Footer from '@/components/Footer';
 
 export default {
   components: {
     NavBar,
-    // Footer,
   },
   data: () => ({
     inventory: Array,
@@ -66,17 +64,3 @@ export default {
   },
 };
 </script>
-
-<style>
-  #app { 
-    /* decide on background img... */
-
-    /* padding-bottom: 70px;
-    background-image: url('https://i.pinimg.com/originals/82/b8/63/82b863eae052ae67390ab86a8dd66301.jpg');
-    background-position-x: 95%;
-    background-position-y: 10%;
-    background-repeat: no-repeat;
-    background-size: 10%; */
-  }
-</style>
-
