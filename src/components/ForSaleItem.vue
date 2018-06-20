@@ -45,7 +45,7 @@ export default {
     },
     setResponseMsg() {
       this.responseMessage =
-      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
+      'Item successfully added to cart ;)';
     },
     postToCart() {
       return fetch('http://localhost:5000/cart', {
@@ -57,8 +57,7 @@ export default {
           cache: 'default',
         },
       })
-        // .then(this.setResponseMsg())
-        // .then(setTimeout(() => { this.redirect(); }, 3000))
+        .then(this.setResponseMsg())
         .catch(error => console.error(error));
     },
   },

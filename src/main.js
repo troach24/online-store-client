@@ -13,7 +13,7 @@ import router from './router';
 
 const options = {
   key: 'pk_test_fTRwe6G0jpZ0VubVkU4pAYwn',
-  image: '/static/mugShot.png',
+  image: 'http://instepchurch.weebly.com/uploads/1/2/3/0/12308158/6479659.jpg',
   locale: 'auto',
   currency: 'node',
   panelLabel: 'Pay {{amount}}',

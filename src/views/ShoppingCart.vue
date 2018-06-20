@@ -35,11 +35,7 @@ export default {
   data() {
     return {
       purchaseData: {
-        amount: 0,
-      },
-      payLoad: {
-        stripeToken: 0,
-        amount: 0,
+        amount: Number,
       },
       paidStatusMsg: '',
     };
@@ -61,7 +57,7 @@ export default {
       // this.$checkout.close()
       // is also available.
       this.$checkout.open({
-        name: 'Shut up and take my money!',
+        name: 'Enter credit card info',
         currency: 'USD',
         amount: this.getTotal(this.cartTable) * 100,
         token: (token) => {
@@ -73,19 +69,17 @@ export default {
           console.log(payLoad);
           fetch('http://localhost:5000/accept-payment', {
             method: 'post',
-            body: JSON.stringify(this.payLoad),
+            body: JSON.stringify(payLoad),
             headers: {
               'Content-Type': 'application/json'
             }
           })
             .then(res => res.json())
-            // FIX THIS SHIZZZZZZZ
             .then(res => {
               // display total charged to client
               if (res.failure_code) {
                 this.paidStatusMsg = 'There was an error processing your card';
               } else {
-                // const message = `Your card was charged $${res.amount / 100}`;
                 this.paidStatusMsg = `Your card was charged $${res.amount / 100}`;
               }
             })
