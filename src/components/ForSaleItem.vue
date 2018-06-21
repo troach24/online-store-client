@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['item', 'cartTable', 'inventory'],
+  props: ['item'],
   data() {
     return {
       responseMessage: '',
@@ -50,8 +50,6 @@ export default {
       'Item successfully added to cart ;)';
     },
     postToCart(obj) {
-      // console.log(this.item.quantity_available)
-      // this.item.quantity_available --;,
       return fetch('http://localhost:5000/cart', {
         method: 'POST',
         body: JSON.stringify(this.obj),
@@ -64,12 +62,6 @@ export default {
         .then(this.setResponseMsg())
         .catch(error => console.error(error));
     },
-    // cartAction() {
-
-    //   if () {
-
-    //   }
-    // },
   },
 };
 </script>

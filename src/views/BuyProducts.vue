@@ -12,8 +12,7 @@
         <ForSaleItem v-for="item in inventory"
         :item="item"
         :key="item.id"
-        :ref="item.id"
-        :cartTable="cartTable" />
+        :ref="item.id" />
       </ul>
     </div>
   </div>
@@ -30,35 +29,6 @@ export default {
   },
   beforeMount() {
     this.getInventory();
-  },
-  data() {
-    return {
-      responseMessage: '',
-      cartItem: {
-        inventory_id: 0,
-        quantity: 0,
-      },
-    };
-  },
-  methods: {
-    setResponseMsg() {
-      this.responseMessage =
-      'ForSaleItem added successfully! Taking you back to your sales item dashboard..';
-    },
-    addItem() {
-      return fetch('http://localhost:5000/cart', {
-        method: 'POST',
-        body: JSON.stringify(this.cartItem),
-        headers: {
-          'content-type': 'application/json',
-          mode: 'cors',
-          cache: 'default',
-        },
-      })
-        .then(this.setResponseMsg())
-        .then(setTimeout(() => { this.redirect(); }, 3000))
-        .catch(error => console.error);
-    },
   },
 };
 </script>
