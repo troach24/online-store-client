@@ -43,6 +43,7 @@ export default {
         cart_item_description: this.item.description,
         cart_item_image_url: this.item.image_url,
         quantity: 1,
+        active: true,
       };
     },
     setResponseMsg() {
