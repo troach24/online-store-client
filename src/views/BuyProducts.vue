@@ -8,12 +8,12 @@
       <h1 class="display-3">BUY THINGS!</h1>
       <p class="lead">This is where you can select items to purchase 😀</p>
       <hr class="my-4">
-      <p>This store is built to showcase my very own full stack CRUD app!</p>
       <ul class="item-ul">
         <ForSaleItem v-for="item in inventory"
         :item="item"
         :key="item.id"
-        :ref="item.id" />
+        :ref="item.id"
+        :cartTable="cartTable" />
       </ul>
     </div>
   </div>

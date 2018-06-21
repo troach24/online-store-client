@@ -1,10 +1,9 @@
 <template>
   <div class="home">
     <div class="jumbotron text-center">
-      <h1 class="display-3">Welcome!</h1>
+      <h1 class="display-3">Shopping is Eazy!</h1>
       <p class="lead">
-        An online marketplace where you can buy and sell all the necessitites
-        for your doggos!
+        Eazy Market is an online marketplace for users to buy and sell a wide variety of products.
       </p>
       <hr class="my-4">
       <p class="lead">

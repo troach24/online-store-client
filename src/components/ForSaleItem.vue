@@ -12,7 +12,7 @@
         <div class="card-bottom">
           <small> {{item.quantity_available}} left in stock</small>
           <button
-          @click="addToCart(), postToCart()"
+          @click="addToCart(newCartItem), postToCart(newCartItem)"
           type="button"
           class="btn btn-info">
           Add to Cart
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['item', 'cartTable', 'inventory'],
   data() {
     return {
       responseMessage: '',
@@ -33,9 +33,8 @@ export default {
     };
   },
   methods: {
-    addToCart() {
-      this.item.quantity_available --;
-      this.newCartItem =
+    addToCart(obj) {
+      this.obj =
       {
         inventory_id: this.item.id,
         cart_item_name: this.item.name,
@@ -50,10 +49,12 @@ export default {
       this.responseMessage =
       'Item successfully added to cart ;)';
     },
-    postToCart() {
+    postToCart(obj) {
+      // console.log(this.item.quantity_available)
+      // this.item.quantity_available --;,
       return fetch('http://localhost:5000/cart', {
         method: 'POST',
-        body: JSON.stringify(this.newCartItem),
+        body: JSON.stringify(this.obj),
         headers: {
           'content-type': 'application/json',
           mode: 'cors',
@@ -63,6 +64,12 @@ export default {
         .then(this.setResponseMsg())
         .catch(error => console.error(error));
     },
+    // cartAction() {
+
+    //   if () {
+
+    //   }
+    // },
   },
 };
 </script>
