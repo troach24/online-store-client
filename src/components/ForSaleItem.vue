@@ -34,8 +34,10 @@ export default {
   },
   methods: {
     addToCart() {
+      this.item.quantity_available --;
       this.newCartItem =
       {
+        inventory_id: this.item.id,
         cart_item_name: this.item.name,
         cart_item_price: this.item.price,
         cart_item_description: this.item.description,
