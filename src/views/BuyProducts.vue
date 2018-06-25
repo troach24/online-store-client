@@ -23,13 +23,13 @@ import ForSaleItem from '@/components/ForSaleItem';
 
 export default {
   name: 'Buy',
-  props: ['getInventory', 'inventory'],
+  props: ['inventory'],
   components: {
     ForSaleItem,
   },
-  beforeMount() {
-    this.getInventory();
-  },
+  // beforeMount() {
+  //   this.getInventory();
+  // },
 };
 </script>
 

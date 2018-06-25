@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
+    <!-- :getInventory="getInventory" -->
     <router-view
-    :inventory="inventory"
-    :getInventory="getInventory"
+    :inventory="inventoryData.inventory"
     :cartTable="cartTable.cart"
     :getCartItems="getCartItems"
     :selectedInventoryItem="selectedInventoryItem"
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import API from '@/API.js';
 import NavBar from '@/components/NavBar';
 
 export default {
@@ -21,23 +22,26 @@ export default {
     NavBar,
   },
   data: () => ({
-    inventory: Array,
+    inventoryData: Array,
     cartTable: Array,
     selectedInventoryItem: Object,
   }),
+    async mounted () {
+    this.inventoryData = await API.getInventory();
+  },
   methods: {
-    getInventory() {
-      fetch(('http://localhost:5000/inventory'), {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
-      })
-        .then(res => res.json())
-        .then((data) => {
-          this.inventory = data.inventory;
-        });
-    },
+    // getInventory() {
+    //   fetch(('http://localhost:5000/inventory'), {
+    //     headers: {
+    //       'Access-Control-Allow-Origin': '*',
+    //       'Access-Control-Allow-Headers': 'Content-Type',
+    //     },
+    //   })
+    //     .then(res => res.json())
+    //     .then((data) => {
+    //       this.inventory = data.inventory;
+    //     });
+    // },
     getCartItems() {
       fetch(('http://localhost:5000/cart'), {
         headers: {

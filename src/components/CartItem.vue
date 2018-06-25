@@ -82,7 +82,6 @@ export default {
       }
     },
     deleteItem() {
-      
       return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
         method: 'DELETE',
         body: JSON.stringify(this.cartItem),
