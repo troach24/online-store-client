@@ -36,8 +36,10 @@
 </template>
 
 <script>
+import API from '@/API';
+
 export default {
-  props: ['cartItem', 'getCartItems'],
+  props: ['cartItem'],
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -97,7 +99,8 @@ export default {
           return false;
         }
         this.setResponseMsg();
-        this.getCartItems();
+        // this.$parent.$emit(cartData) uggghghghgh fack
+        API.getCartItems();
         return true;
       }).then((success) => {
         if (!success) { return };

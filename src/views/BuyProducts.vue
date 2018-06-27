@@ -27,9 +27,6 @@ export default {
   components: {
     ForSaleItem,
   },
-  // beforeMount() {
-  //   this.getInventory();
-  // },
 };
 </script>
 

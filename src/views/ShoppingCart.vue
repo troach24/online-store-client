@@ -11,8 +11,7 @@
       <ul>
         <CartItem v-for="cartItem in cartTable"
         :cartItem="cartItem"
-        :key="cartItem.id"
-        :getCartItems="getCartItems" />
+        :key="cartItem.id"/>
       </ul>
       <div>
         <button class="btn btn-success btn-lg" @click="checkout">Checkout</button>
@@ -22,16 +21,14 @@
 </template>
 
 <script>
+import API from '@/API';
 import CartItem from '@/components/CartItem';
 
 export default {
   components: {
     CartItem,
   },
-  props: ['getCartItems', 'cartTable', 'getInventory', 'inventory'],
-  beforeMount() {
-    this.getCartItems();
-  },
+  props: ['cartTable', 'inventory'],
   data() {
     return {
       purchaseData: {
@@ -53,7 +50,7 @@ export default {
       paidStatusMsg = message;
     },
     checkout() {
-      this.getCartItems();
+      API.getCartItems();
       // this.$checkout.close()
       // is also available.
       this.$checkout.open({

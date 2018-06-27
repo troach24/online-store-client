@@ -12,8 +12,10 @@
       </p>
       <hr class="my-4">
       <ul>
-        <InventoryItem :getInventory="getInventory" v-for="item in inventory"
+        <InventoryItem v-for="item in inventory"
         :item="item"
+        :computedProperty="computedProperty"
+        :deleteItem="deleteItem"
         :key="item.id" />
       </ul>
     </div>
@@ -21,16 +23,59 @@
 </template>
 
 <script>
+import API from '@/API.js';
 import InventoryItem from '@/components/InventoryItem';
 
 export default {
   name: 'Sell',
-  props: ['getInventory', 'inventory'],
+  props: ['inventory'],
   components: {
     InventoryItem,
   },
-  beforeMount() {
-    this.getInventory();
+  methods: {
+    async deleteItem(obj) {
+      try {
+        const res = await fetch((`http://localhost:5000/inventory/${obj.id}`), {
+        method: 'DELETE',
+        body: JSON.stringify(this.obj),
+        headers: {
+          'content-type': 'application/json',
+          mode: 'cors',
+          cache: 'default',
+        },
+      });
+      API.getInventory();
+      return true;
+    } catch (error) {
+      error.message = 'error';
+      return error.message;
+    }
+  },
+      
+    //   .then((res) => {
+    //     if (res.status === 500) {
+    //       this.errorMessage = 'Something went wrong. Please try again';
+    //       throw new Error(this.errorMessage);
+    //       return false;
+    //     }
+    //     // this.setResponseMsg();
+    //     // this.computedProperty();
+    //     // await API.getInventory();
+    //     return true;
+    //   }).then((success) => {
+    //     if (!success) { return };
+    //   });
+    // },
+  },
+  computed: {
+    computedProperty() {
+      return this.inventory;
+    },
+  },
+  watch: {
+    computedProperty() {
+      return this.inventory;
+    },
   },
 };
 </script>

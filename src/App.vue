@@ -4,8 +4,7 @@
     <!-- :getInventory="getInventory" -->
     <router-view
     :inventory="inventoryData.inventory"
-    :cartTable="cartTable.cart"
-    :getCartItems="getCartItems"
+    :cartTable="cartData.cart"
     :selectedInventoryItem="selectedInventoryItem"
     :getItemById="getItemById"
     class="container"/>
@@ -23,15 +22,16 @@ export default {
   },
   data: () => ({
     inventoryData: Array,
-    cartTable: Array,
+    cartData: Array,
     selectedInventoryItem: Object,
   }),
-    async mounted () {
+  async mounted () {
     this.inventoryData = await API.getInventory();
+    this.cartData = await API.getCartItems();
   },
   methods: {
-    // getInventory() {
-    //   fetch(('http://localhost:5000/inventory'), {
+    // getCartItems() {
+    //   fetch(('http://localhost:5000/cart'), {
     //     headers: {
     //       'Access-Control-Allow-Origin': '*',
     //       'Access-Control-Allow-Headers': 'Content-Type',
@@ -39,21 +39,9 @@ export default {
     //   })
     //     .then(res => res.json())
     //     .then((data) => {
-    //       this.inventory = data.inventory;
+    //       this.cartTable = data;
     //     });
     // },
-    getCartItems() {
-      fetch(('http://localhost:5000/cart'), {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
-      })
-        .then(res => res.json())
-        .then((data) => {
-          this.cartTable = data;
-        });
-    },
     getItemById(route) {
       fetch((`http://localhost:5000/inventory/${route}`), {
         headers: {
