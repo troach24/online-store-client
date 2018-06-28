@@ -12,7 +12,7 @@
         <div class="card-bottom">
           <small> {{item.quantity_available}} left in stock</small>
           <button
-          @click="addToCart(newCartItem), postToCart(newCartItem)"
+          @click="createCartObj(newCartItem), addToCart(newCartItem)"
           type="button"
           class="btn btn-info">
           Add to Cart
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['item', 'checkIdMatch', 'putItem'],
   data() {
     return {
       responseMessage: '',
@@ -33,7 +33,7 @@ export default {
     };
   },
   methods: {
-    addToCart(obj) {
+    createCartObj(obj) {
       this.obj =
       {
         inventory_id: this.item.id,
@@ -49,7 +49,10 @@ export default {
       this.responseMessage =
       'Item successfully added to cart ;)';
     },
-    postToCart(obj) {
+    addToCart(obj) {
+      // if (this.checkIdMatch(obj)) {
+      //   this.putItem(obj)
+      // }
       return fetch('http://localhost:5000/cart', {
         method: 'POST',
         body: JSON.stringify(this.obj),

@@ -85,7 +85,7 @@ export default {
         },
       }).then((res) => {
         if (res.status === 500) {
-          this.errorMessage = 'ahahahahahah';
+          this.errorMessage = 'Item did not POST to database.';
           throw new Error(this.errorMessage);
           return false;
         }
