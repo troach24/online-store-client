@@ -13,7 +13,7 @@
           <small> {{item.quantity_available}} left in stock</small>
           <!-- createCartObj(newCartItem), addToCart(newCartItem) -->
           <button
-          @click="checkIdMatch(item)"
+          @click="idMatch(item)"
           type="button"
           class="btn btn-info">
           Add to Cart
@@ -50,10 +50,43 @@ export default {
       this.responseMessage =
       'Item successfully added to cart ;)';
     },
+    idMatch(obj) { 
+      for (let i = 0; i < this.cartTable.length; i++) {
+        // let cartItem = this.cartTable[i];
+        if (this.item.id === this.cartTable[i].inventory_id) {
+          const appendCartObj = {
+            id: this.cartTable[i].id,
+            putObj: {
+              inventory_id: obj.inventory_id,
+              cart_item_name: obj.cart_item_name,
+              cart_item_price: obj.cart_item_price,
+              cart_item_description: obj.cart_item_description,
+              cart_item_image_url: obj.cart_item_image_url,
+              quantity: this.cartTable[i].quantity + 1,
+              active: obj.active
+            }
+          }
+          const result = this.updateCartItem(appendCartObj)
+          return result
+          break
+        } 
+        else {
+          this.createCartObj(obj)
+          const result = this.addToCart(obj)
+          return result
+          break
+        }
+        return
+        // else if (cartItem.inventory_id !== obj.id) {
+        //   this.createCartObj(obj)
+        //   return this.addToCart(obj)
+        // }
+      }
+    },
     checkIdMatch(obj) { 
       return this.cartTable.reduce((a,cartItem,c) => {
         if (cartItem.inventory_id == obj.id) {
-          const newCartObj = {
+          const appendCartObj = {
             id: cartItem.id,
             putObj: {
               inventory_id: this.obj.inventory_id,
@@ -65,7 +98,7 @@ export default {
               active: this.obj.active
             }
           }
-          a = newCartObj
+          a = appendCartObj
           // console.log('put', a);
           return this.updateCartItem(a)
         } else if (cartItem.inventory_id !== obj.id) {
