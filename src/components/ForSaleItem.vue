@@ -50,6 +50,7 @@ export default {
       'Item successfully added to cart ;)';
     },
     postToCart(obj) {
+      this.item.quantity_available --;
       return fetch('http://localhost:5000/cart', {
         method: 'POST',
         body: JSON.stringify(this.obj),
