@@ -27,6 +27,7 @@
               </select>
             </div>
           <div>
+            <!-- deleteItem() -->
             <button @click="deleteItem()" type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
@@ -46,6 +47,10 @@ export default {
     };
   },
   methods: {
+    // test() {
+    //   console.log(this.cartItem);
+      
+    // },
     setResponseMsg() {
       this.responseMsg = 'Success!';
     },
@@ -82,7 +87,6 @@ export default {
       }
     },
     deleteItem() {
-      
       return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
         method: 'DELETE',
         body: JSON.stringify(this.cartItem),

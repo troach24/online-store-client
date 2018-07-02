@@ -13,8 +13,9 @@
         :item="item"
         :key="item.id"
         :ref="item.id"
-        :checkIdMatch="checkIdMatch"
+        :cartTable="cartTable"
         :putItem="putItem" />
+        <!-- :checkIdMatch="checkIdMatch" -->
       </ul>
     </div>
   </div>
@@ -25,12 +26,13 @@ import ForSaleItem from '@/components/ForSaleItem';
 
 export default {
   name: 'Buy',
-  props: ['getInventory', 'inventory', 'cartTable'],
+  props: ['getInventory', 'inventory', 'cartTable', 'getCartItems'],
   components: {
     ForSaleItem,
   },
   beforeMount() {
     this.getInventory();
+    this.getCartItems();
   },
   methods: {
     putItem(obj) {
@@ -56,13 +58,22 @@ export default {
         return setTimeout(() => this.redirect(), 3000);
       });
     },
-    checkIdMatch(obj) {
-      return this.cartTable.map(cartItem => {
-        if (cartItem.inventory_id == obj.inventory_id)  {
-          putItem(obj)
-        }
-      })
-    },
+    // checkIdMatch(obj) {
+    //   obj.quantity_available --
+    //   return this.cartTable.reduce((a,cartItem,c) => {
+    //     if (cartItem.inventory_id == obj.id) {
+    //       cartItem.quantity ++
+    //       a = obj
+    //       console.log(`put/${obj.id}`)
+    //       return a + 'put'
+    //     } else {
+    //       console.log(`post/${obj.id}`)
+    //       a = obj
+    //       return a + 'post'
+    //     }
+    //   }, 
+    //   {})
+    // },
   },
 };
 </script>
