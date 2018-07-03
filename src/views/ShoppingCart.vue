@@ -78,6 +78,7 @@ export default {
                 this.paidStatusMsg =
                 'Your card was not charged. Please re-enter your payment info.';
               } else {
+                this.cartTable = [];
                 this.paidStatusMsg = `Your card was charged $${res.amount / 100}`;
               }
             })
