@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import API from '../API.js';
+
 export default {
   props: ['item'],
   data() {
@@ -51,7 +53,7 @@ export default {
     },
     postToCart(obj) {
       this.item.quantity_available --;
-      return fetch('http://localhost:5000/cart', {
+      return fetch(`${API.API_URL}/cart`, {
         method: 'POST',
         body: JSON.stringify(this.obj),
         headers: {

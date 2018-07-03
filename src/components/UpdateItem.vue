@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import API from '../API.js';
+
 export default {
   data() {
     return {
@@ -73,7 +75,7 @@ export default {
       'Item updated successfully! Taking you back to your sales item dashboard..';
     },
     updateItem() {
-      return fetch((`http://localhost:5000/inventory/${this.$route.params.id}`), {
+      return fetch((`${API.API_URL}/inventory/${this.$route.params.id}`), {
         method: 'PUT',
         body: JSON.stringify(this.selectedInventoryItem),
         headers: {

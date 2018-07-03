@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import API from '../API.js';
 import CartItem from '@/components/CartItem';
 
 export default {
@@ -67,7 +68,7 @@ export default {
             amount: this.purchaseData.amount
           };
           console.log(payLoad);
-          fetch('http://localhost:5000/accept-payment', {
+          fetch(`${API.API_URL}/accept-payment`, {
             method: 'post',
             body: JSON.stringify(payLoad),
             headers: {

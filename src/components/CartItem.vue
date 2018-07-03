@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import API from '../API.js';
+
 export default {
   props: ['cartItem', 'getCartItems'],
   data() {
@@ -50,7 +52,7 @@ export default {
       this.responseMsg = 'Success!';
     },
     updateItem(cartItem) {
-      return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
+      return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
         method: 'PUT',
         body: JSON.stringify(cartItem),
         headers: {
@@ -83,7 +85,7 @@ export default {
     },
     deleteItem() {
       
-      return fetch((`http://localhost:5000/cart/${this.cartItem.id}`), {
+      return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
         method: 'DELETE',
         body: JSON.stringify(this.cartItem),
         headers: {

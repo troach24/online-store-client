@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import API from './API.js';
 import NavBar from '@/components/NavBar';
 
 export default {
@@ -27,7 +28,7 @@ export default {
   }),
   methods: {
     getInventory() {
-      fetch(('http://localhost:5000/inventory'), {
+      fetch((`${API.API_URL}/inventory`), {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Content-Type',
@@ -39,7 +40,7 @@ export default {
         });
     },
     getCartItems() {
-      fetch(('http://localhost:5000/cart'), {
+      fetch((`${API.API_URL}/cart`), {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Content-Type',
@@ -51,7 +52,7 @@ export default {
         });
     },
     getItemById(route) {
-      fetch((`http://localhost:5000/inventory/${route}`), {
+      fetch((`${API.API_URL}/inventory/${route}`), {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': 'Content-Type',

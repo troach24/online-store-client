@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import API from '../API.js';
+
 export default {
   props: ['item', 'getInventory'],
   methods: {
@@ -30,7 +32,7 @@ export default {
       this.$router.push(`/inventory/update/${selectedId}`);
     },
     deleteItem() {
-      return fetch((`http://localhost:5000/inventory/${this.item.id}`), {
+      return fetch((`${API.API_URL}/inventory/${this.item.id}`), {
         method: 'DELETE',
         body: JSON.stringify(this.item),
         headers: {

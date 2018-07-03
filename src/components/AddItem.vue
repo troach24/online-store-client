@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import API from '../API.js';
+
 export default {
   data() {
     return {
@@ -75,7 +77,7 @@ export default {
       'Item added successfully! Taking you back to your sales item dashboard..';
     },
     addItem() {
-      return fetch('http://localhost:5000/inventory', {
+      return fetch(`${API.API_URL}/inventory`, {
         method: 'POST',
         body: JSON.stringify(this.item),
         headers: {
