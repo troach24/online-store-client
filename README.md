@@ -4,7 +4,8 @@
 
 ```
 Use cases: 
-1. As a 'buyer', a user can browse for items and add them to the shopping cart, then simulate the checkout process using a test credit card number. 
+1. As a 'buyer', a user can browse for items and add them to the shopping cart, 
+then simulate the checkout process using a test credit card number. 
 2. As a 'seller', a user can add, edit, and or delete inventory items from the database.
 ```
 
