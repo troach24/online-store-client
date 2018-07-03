@@ -13,6 +13,9 @@ npm run dev
 
 ```
 
+Add Inventory Item Demo
+![](https://user-images.githubusercontent.com/33434059/42196572-eefa0e0a-7e3b-11e8-8eaa-20453648f522.gif)
+
 Stripe Payment Demo
 ![](https://user-images.githubusercontent.com/33434059/42196183-d320abfa-7e39-11e8-8323-31f264e03d70.gif)
 
