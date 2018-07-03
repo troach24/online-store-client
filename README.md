@@ -9,8 +9,6 @@ then simulate the checkout process using a test credit card number.
 2. As a 'seller', a user can add, edit, and or delete inventory items from the database.
 ```
 
-Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
-
 ## Client Setup
 
 ``` bash
@@ -44,6 +42,9 @@ Stripe Payment Testing Info:
 Stripe Checkout Demo
 
 ![](https://user-images.githubusercontent.com/33434059/42196183-d320abfa-7e39-11e8-8323-31f264e03d70.gif)
+
+
+Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
 
 
 #### Check out the server side repository [here](https://github.com/troach24/online-store-db) 
