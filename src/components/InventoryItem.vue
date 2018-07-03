@@ -22,14 +22,18 @@
 </template>
 
 <script>
-import API from '../API.js';
+import API from '../API';
 
 export default {
-  props: ['item', 'getInventory'],
+  props: ['item', 'getInventory', 'responseMessage'],
   methods: {
     loadParams() {
       const selectedId = this.item.id;
       this.$router.push(`/inventory/update/${selectedId}`);
+    },
+    setResponseMsg() {
+      this.responseMessage =
+      'Item successfully removed from inventory)';
     },
     deleteItem() {
       return fetch((`${API.API_URL}/inventory/${this.item.id}`), {
@@ -46,11 +50,13 @@ export default {
           throw new Error(this.errorMessage);
           return false;
         }
-        // this.setResponseMsg();
+        this.setResponseMsg();
         this.getInventory();
         return true;
       }).then((success) => {
-        if (!success) { return };
+        if (!success) {
+          return;
+        }
       });
     },
   },

@@ -8,8 +8,9 @@
       <h1 class="display-3">BUY THINGS!</h1>
       <p class="lead">This is where you can select items to purchase 😀</p>
       <hr class="my-4">
+      <p>{{ responseMessage }}</p>
       <ul class="item-ul">
-        <ForSaleItem v-for="item in inventory"
+        <ForSaleItem :responseMessage="responseMessage" v-for="item in inventory"
         :item="item"
         :key="item.id"
         :ref="item.id" />
@@ -30,6 +31,9 @@ export default {
   beforeMount() {
     this.getInventory();
   },
+  data: () => ({
+    responseMessage: '',
+  }),
 };
 </script>
 

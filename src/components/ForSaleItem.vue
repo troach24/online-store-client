@@ -24,19 +24,18 @@
 </template>
 
 <script>
-import API from '../API.js';
+import API from '../API';
 
 export default {
-  props: ['item'],
+  props: ['item', 'responseMessage'],
   data() {
     return {
-      responseMessage: '',
       newCartItem: Object,
     };
   },
   methods: {
-    addToCart(obj) {
-      this.obj =
+    addToCart() {
+      this.newCartItem =
       {
         inventory_id: this.item.id,
         cart_item_name: this.item.name,
@@ -51,11 +50,11 @@ export default {
       this.responseMessage =
       'Item successfully added to cart ;)';
     },
-    postToCart(obj) {
-      this.item.quantity_available --;
+    postToCart() {
+      this.item.quantity_available--;
       return fetch(`${API.API_URL}/cart`, {
         method: 'POST',
-        body: JSON.stringify(this.obj),
+        body: JSON.stringify(this.newCartItem),
         headers: {
           'content-type': 'application/json',
           mode: 'cors',

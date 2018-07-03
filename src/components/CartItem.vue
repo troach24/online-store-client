@@ -36,20 +36,19 @@
 </template>
 
 <script>
-import API from '../API.js';
+import API from '../API';
 
 export default {
-  props: ['cartItem', 'getCartItems'],
+  props: ['cartItem', 'getCartItems', 'responseMessage'],
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       category: 1,
-      responseMsg: '',
     };
   },
   methods: {
     setResponseMsg() {
-      this.responseMsg = 'Success!';
+      this.responseMessage = 'Item successfully deleted from cart';
     },
     updateItem(cartItem) {
       return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
@@ -66,10 +65,12 @@ export default {
           throw new Error(this.errorMessage);
           return false;
         }
-        this.setResponseMsg();
+        this.responseMessage = 'Purchase quantity successfully updated'
         return true;
       }).then((success) => {
-        if (!success) { return };
+        if (!success) {
+          return;
+        }
       });
     },
     updateQuantity(value) {
@@ -84,7 +85,6 @@ export default {
       }
     },
     deleteItem() {
-      
       return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
         method: 'DELETE',
         body: JSON.stringify(this.cartItem),
@@ -103,7 +103,9 @@ export default {
         this.getCartItems();
         return true;
       }).then((success) => {
-        if (!success) { return };
+        if (!success) {
+          return;
+        }
       });
     },
   },

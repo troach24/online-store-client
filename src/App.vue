@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import API from './API.js';
 import NavBar from '@/components/NavBar';
+import API from './API';
 
 export default {
   components: {

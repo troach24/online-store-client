@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import API from '../API.js';
+import API from '../API';
 
 export default {
   data() {
@@ -94,7 +94,9 @@ export default {
         this.setResponseMsg();
         return true;
       }).then((success) => {
-        if (!success) { return };
+        if (!success) {
+          return;
+        }
         return setTimeout(() => this.redirect(), 3000);
       });
     },

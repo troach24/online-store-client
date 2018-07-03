@@ -32,6 +32,9 @@ export default {
   beforeMount() {
     this.getInventory();
   },
+  data: () => ({
+    responseMessage: '',
+  }),
 };
 </script>
 
