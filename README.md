@@ -1,6 +1,14 @@
 # Eazy Marketplace (Client)
 
-> A full stack Vue.js CRUD application that simulates an online marketplace experience. Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
+> A full stack Vue.js CRUD application that simulates an online marketplace experience. 
+
+```
+Use cases: 
+1. As a 'buyer', a user can browse for items and add them to the shopping cart, then simulate the checkout process using a test credit card number. 
+2. As a 'seller', a user can add, edit, and or delete inventory items from the database.
+```
+
+Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
 
 ## Client Setup
 
@@ -13,11 +21,15 @@ npm run dev
 
 ```
 
-Add Inventory Item Demo
-![](https://user-images.githubusercontent.com/33434059/42196572-eefa0e0a-7e3b-11e8-8eaa-20453648f522.gif)
 
-Stripe Payment Demo
-![](https://user-images.githubusercontent.com/33434059/42196183-d320abfa-7e39-11e8-8323-31f264e03d70.gif)
+Add Inventory Item
+![](https://user-images.githubusercontent.com/33434059/42197567-a1736c80-7e40-11e8-8c1d-c4bab4364d5b.gif)
+
+
+Add Item(s) to Cart
+![](https://user-images.githubusercontent.com/33434059/42197336-897a983e-7e3f-11e8-91ca-cbcf46859ba6.gif)
+
+
 
 Stripe Payment Testing Info:
 ``` bash
@@ -27,3 +39,9 @@ Stripe Payment Testing Info:
 # Use any 3 digit verification number
 
 ``` 
+
+Stripe Checkout Demo
+![](https://user-images.githubusercontent.com/33434059/42196183-d320abfa-7e39-11e8-8323-31f264e03d70.gif)
+
+
+#### Check out the server side repository [here](https://github.com/troach24/online-store-db) 
