@@ -48,7 +48,7 @@
     placeholder="Paste image URL here..."
     id="inputDefault">
     <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
-    <p id="response-message">{{responseMessage || errorMessage}}</p>
+    <p id="response-message">{{ responseMessage || errorMessage }}</p>
   </form>
 </template>
 
@@ -63,17 +63,21 @@ export default {
     };
   },
   props: ['getItemById', 'selectedInventoryItem'],
+  // Get item object by id from the database
   created() {
     this.getItemById(this.$route.params.id);
   },
   methods: {
+    // Re-direct the user back to the inventory dashboard
     redirect() {
       this.$router.push('/inventory/sell');
     },
+    // Alert user the item was successfully updated in the database
     setResponseMsg() {
       this.responseMessage =
       'Item updated successfully! Taking you back to your sales item dashboard..';
     },
+    // Send updated item to database
     updateItem() {
       return fetch((`${API.API_URL}/inventory/${this.$route.params.id}`), {
         method: 'PUT',

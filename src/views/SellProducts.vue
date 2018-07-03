@@ -5,8 +5,8 @@
       <li class="breadcrumb-item active">Sell</li>
     </ol>
     <div class="container">
-      <h1 class="display-3">SELL STUFF!</h1>
-      <p class="lead">Add an item or view what you have posted for sale.</p>
+      <h1 class="display-3">SELL YOUR STUFF!</h1>
+      <p class="lead">You have {{ inventory.length }} item(s) up for sale at this time.</p>
       <p class="lead">
         <a class="btn btn-primary btn-lg" href="/#/inventory/add-item" role="button">Add Item</a>
       </p>
@@ -29,12 +29,10 @@ export default {
   components: {
     InventoryItem,
   },
+  // Retrieve inventory on page load
   beforeMount() {
     this.getInventory();
   },
-  data: () => ({
-    responseMessage: '',
-  }),
 };
 </script>
 

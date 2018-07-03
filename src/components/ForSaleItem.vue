@@ -27,13 +27,14 @@
 import API from '../API';
 
 export default {
-  props: ['item', 'responseMessage'],
+  props: ['item'],
   data() {
     return {
       newCartItem: Object,
     };
   },
   methods: {
+    // Create an object that the shopping cart database can accept
     addToCart() {
       this.newCartItem =
       {
@@ -46,10 +47,7 @@ export default {
         active: true,
       };
     },
-    setResponseMsg() {
-      this.responseMessage =
-      'Item successfully added to cart ;)';
-    },
+    // Add item to shopping cart
     postToCart() {
       this.item.quantity_available--;
       return fetch(`${API.API_URL}/cart`, {
@@ -61,7 +59,7 @@ export default {
           cache: 'default',
         },
       })
-        .then(this.setResponseMsg())
+        .then(alert(`1 ${this.item.name} successfully added to shopping cart!`))
         .catch(error => console.error(error));
     },
   },

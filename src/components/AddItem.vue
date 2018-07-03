@@ -48,7 +48,7 @@
     placeholder="Paste image URL here..."
     id="inputDefault">
     <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
-    <p id="response-message">{{responseMessage || errorMessage}}</p>
+    <p id="response-message">{{ responseMessage || errorMessage }}</p>
   </form>
 </template>
 
@@ -69,13 +69,16 @@ export default {
     };
   },
   methods: {
+    // Re-direct user back to inventory dashboard
     redirect() {
       this.$router.push('/inventory/sell');
     },
+    // Notify user that item was added to the inventory database
     setResponseMsg() {
       this.responseMessage =
       'Item added successfully! Taking you back to your sales item dashboard..';
     },
+    // Post item object to inventory database
     addItem() {
       return fetch(`${API.API_URL}/inventory`, {
         method: 'POST',
@@ -87,7 +90,7 @@ export default {
         },
       }).then((res) => {
         if (res.status === 500) {
-          this.errorMessage = 'ahahahahahah';
+          this.errorMessage = 'Error: please re-submit the form.';
           throw new Error(this.errorMessage);
           return false;
         }

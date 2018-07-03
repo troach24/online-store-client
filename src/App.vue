@@ -27,6 +27,7 @@ export default {
     selectedInventoryItem: Object,
   }),
   methods: {
+    // Retrieve full inventory from database
     getInventory() {
       fetch((`${API.API_URL}/inventory`), {
         headers: {
@@ -39,6 +40,7 @@ export default {
           this.inventory = data.inventory;
         });
     },
+    // Retrieve current cart data from database
     getCartItems() {
       fetch((`${API.API_URL}/cart`), {
         headers: {
@@ -51,6 +53,7 @@ export default {
           this.cartTable = data;
         });
     },
+    // Retreive data object to update a specific inventory item, pass to child component
     getItemById(route) {
       fetch((`${API.API_URL}/inventory/${route}`), {
         headers: {

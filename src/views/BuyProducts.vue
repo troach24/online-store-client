@@ -5,12 +5,13 @@
       <li class="breadcrumb-item"><a href="/#/inventory/sell">Sell</a></li>
     </ol>
     <div class="container">
-      <h1 class="display-3">BUY THINGS!</h1>
-      <p class="lead">This is where you can select items to purchase 😀</p>
+      <h1 class="display-3">FOR SALE</h1>
+      <p class="lead">
+        There are {{ inventory.length }} item(s) available for purchase at this time.
+      </p>
       <hr class="my-4">
-      <p>{{ responseMessage }}</p>
       <ul class="item-ul">
-        <ForSaleItem :responseMessage="responseMessage" v-for="item in inventory"
+        <ForSaleItem v-for="item in inventory"
         :item="item"
         :key="item.id"
         :ref="item.id" />
@@ -28,12 +29,10 @@ export default {
   components: {
     ForSaleItem,
   },
+  // Retrieve inventory on page load
   beforeMount() {
     this.getInventory();
   },
-  data: () => ({
-    responseMessage: '',
-  }),
 };
 </script>
 

@@ -7,14 +7,12 @@
       <h1 class="display-3">CART!</h1>
       <p class="lead">Here is what you've chosen to waste your money on.</p>
       <hr class="my-4">
-      <h2>{{ paidStatusMsg }}</h2>
-      <h2>{{ responseMessage }}</h2>
+      <h5 id="paid-status-msg">{{ paidStatusMsg }}</h5>
       <ul>
         <CartItem v-for="cartItem in cartTable"
         :cartItem="cartItem"
         :key="cartItem.id"
-        :getCartItems="getCartItems"
-        :responseMessage="responseMessage" />
+        :getCartItems="getCartItems" />
       </ul>
       <div>
         <button class="btn btn-success btn-lg" @click="checkout">Checkout</button>
@@ -32,6 +30,7 @@ export default {
     CartItem,
   },
   props: ['getCartItems', 'cartTable', 'getInventory', 'inventory'],
+  // Retrieve cart data on page load
   beforeMount() {
     this.getCartItems();
   },
@@ -41,7 +40,6 @@ export default {
         amount: Number,
       },
       paidStatusMsg: '',
-      responseMessage: '',
     };
   },
   methods: {
@@ -52,11 +50,6 @@ export default {
         this.purchaseData.amount = total;
         return total;
       }, 0);
-    },
-    // CC processing error
-    displayError(err, paidStatusMsg) {
-      const message = `There was an error processing your credit card: ${err.message}`;
-      paidStatusMsg = message;
     },
     // Checkout info sent to stripe account dashboard
     checkout() {
@@ -79,9 +72,11 @@ export default {
           })
             .then(res => res.json())
             .then((res) => {
-              // display total charged to client
+              // Display total charged to client || CC processing error
               if (res.failure_code) {
-                this.paidStatusMsg = 'There was an error processing your card';
+                alert('There was an error processing your card. Please try again.');
+                this.paidStatusMsg =
+                'Your card was not charged. Please re-enter your payment info.';
               } else {
                 this.paidStatusMsg = `Your card was charged $${res.amount / 100}`;
               }
@@ -104,5 +99,8 @@ export default {
   }
   button {
     margin-bottom: 20px;
+  }
+  #paid-status-msg {
+    color: red;
   }
 </style>
