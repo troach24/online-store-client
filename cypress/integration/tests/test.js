@@ -1,7 +1,7 @@
 
-describe('Bridge The Fridge', function () {
+describe('Eazy Marketplace', function () {
   it('.should() - assert that <title> is correct', function () {
-    cy.visit('http://localhost:8080/')
+    cy.visit('https://eazy-marketplace.firebaseapp.com/#/')
 
     // review home/landing page
     cy.get('#app > nav').children('a', 'div').should('exist')
