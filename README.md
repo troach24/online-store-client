@@ -41,6 +41,7 @@ Stripe Payment Testing Info:
 ``` 
 
 Stripe Checkout Demo
+
 ![](https://user-images.githubusercontent.com/33434059/42196183-d320abfa-7e39-11e8-8323-31f264e03d70.gif)
 
 
