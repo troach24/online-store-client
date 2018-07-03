@@ -47,4 +47,6 @@ Stripe Checkout Demo
 Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
 
 
-#### Check out the server side repository [here](https://github.com/troach24/online-store-db) 
+#### Check out the server side repository [here](https://github.com/troach24/online-store-db)
+
+Please do not hesitate to email me at travis.roach24@gmail.com if you have any recommendations!
