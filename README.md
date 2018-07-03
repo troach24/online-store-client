@@ -1,6 +1,6 @@
 # Eazy Marketplace (Client)
 
-> A vue.js client for online store project
+> A full stack Vue.js CRUD application that simulates an online marketplace experience. Check out the live demo [HERE](https://eazy-marketplace.firebaseapp.com/#/)!
 
 ## Client Setup
 
