@@ -25,16 +25,14 @@
 import API from '../API';
 
 export default {
-  props: ['item', 'getInventory', 'responseMessage'],
+  props: ['item', 'getInventory'],
   methods: {
+    // Access selected item's data directly from database to pre-populate form
     loadParams() {
       const selectedId = this.item.id;
       this.$router.push(`/inventory/update/${selectedId}`);
     },
-    setResponseMsg() {
-      this.responseMessage =
-      'Item successfully removed from inventory)';
-    },
+    // Remove item from inventory database
     deleteItem() {
       return fetch((`${API.API_URL}/inventory/${this.item.id}`), {
         method: 'DELETE',
@@ -50,13 +48,9 @@ export default {
           throw new Error(this.errorMessage);
           return false;
         }
-        this.setResponseMsg();
+        alert(`${this.item.name} removed from inventory`);
         this.getInventory();
         return true;
-      }).then((success) => {
-        if (!success) {
-          return;
-        }
       });
     },
   },

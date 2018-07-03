@@ -45,9 +45,7 @@ export default {
     };
   },
   methods: {
-    setResponseMsg() {
-      this.responseMessage = 'Item successfully deleted from cart';
-    },
+    // Pre-populate stripe payment form with the checkout total
     getTotal(arr) {
       return arr.reduce((total, checkoutItem) => {
         total += checkoutItem.cart_item_price * checkoutItem.quantity;
@@ -55,14 +53,16 @@ export default {
         return total;
       }, 0);
     },
+    // CC processing error
     displayError(err, paidStatusMsg) {
       const message = `There was an error processing your credit card: ${err.message}`;
       paidStatusMsg = message;
     },
+    // Checkout info sent to stripe account dashboard
     checkout() {
       this.getCartItems();
       this.$checkout.open({
-        name: 'Enter credit card info',
+        name: 'CC #: 4242 4242 4242 4242',
         currency: 'USD',
         amount: this.getTotal(this.cartTable) * 100,
         token: (token) => {

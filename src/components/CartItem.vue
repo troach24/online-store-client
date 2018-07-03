@@ -39,7 +39,7 @@
 import API from '../API';
 
 export default {
-  props: ['cartItem', 'getCartItems', 'responseMessage'],
+  props: ['cartItem', 'getCartItems'],
   data() {
     return {
       quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -47,9 +47,7 @@ export default {
     };
   },
   methods: {
-    setResponseMsg() {
-      this.responseMessage = 'Item successfully deleted from cart';
-    },
+    // Use after quantity update event
     updateItem(cartItem) {
       return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
         method: 'PUT',
@@ -65,14 +63,11 @@ export default {
           throw new Error(this.errorMessage);
           return false;
         }
-        this.responseMessage = 'Purchase quantity successfully updated'
+        alert(`Updated ${this.cartItem.cart_item_name} quantity to ${this.cartItem.quantity}`);
         return true;
-      }).then((success) => {
-        if (!success) {
-          return;
-        }
       });
     },
+    // Quantitiy updates when dropdown value is changed
     updateQuantity(value) {
       const optionElements = value.path[0];
       const optionArray = [...optionElements];
@@ -84,6 +79,7 @@ export default {
         }
       }
     },
+    // Remove item from cart
     deleteItem() {
       return fetch((`${API.API_URL}/cart/${this.cartItem.id}`), {
         method: 'DELETE',
@@ -99,13 +95,8 @@ export default {
           throw new Error(this.errorMessage);
           return false;
         }
-        this.setResponseMsg();
+        alert(`${this.cartItem.cart_item_name} removed from cart`);
         this.getCartItems();
-        return true;
-      }).then((success) => {
-        if (!success) {
-          return;
-        }
       });
     },
   },
