@@ -29,6 +29,7 @@ export default {
     selectedInventoryItem: Object,
     loading: false,
   }),
+  // display loading spinner while fetching data
   async mounted(data) {
     if (this.inventory.length < 2) {
       this.loading = true;
@@ -47,10 +48,6 @@ export default {
         },
       })
       return res.json()
-        // .then(res => res.json())
-        // .then((data) => {
-        //   this.inventory = data.inventory;
-        // });
     },
     // Retrieve current cart data from database
     getCartItems() {
