@@ -39,5 +39,4 @@ export default {
     height: 85vh;
     overflow: auto;
   }
-</style>
-
+  </style>

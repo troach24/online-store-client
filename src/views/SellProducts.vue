@@ -12,9 +12,19 @@
       </p>
       <hr class="my-4">
       <ul>
-        <InventoryItem :getInventory="getInventory" v-for="item in inventory"
-        :item="item"
-        :key="item.id" />
+        <div v-if="loading" class="load">
+          <img
+            src="https://talk.openmrs.org/uploads/default/original/2X/d/debba174801e7dac4f8006280b72ae8b0c5bb36d.gif"
+            alt="loading items...">
+          <p class="lead">Loading Inventory Items...</p>
+        </div>
+        <InventoryItem
+          v-else
+          :getInventory="getInventory"
+          v-for="item in inventory"
+          :item="item"
+          :key="item.id"
+        />
       </ul>
     </div>
   </div>
@@ -25,13 +35,9 @@ import InventoryItem from '@/components/InventoryItem';
 
 export default {
   name: 'Sell',
-  props: ['getInventory', 'inventory'],
+  props: ['getInventory', 'inventory', 'loading'],
   components: {
     InventoryItem,
-  },
-  // Retrieve inventory on page load
-  beforeMount() {
-    this.getInventory();
   },
 };
 </script>
@@ -44,5 +50,9 @@ export default {
     padding: 0;
     margin-top: 20px;
   }
+  .load {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 </style>
-
